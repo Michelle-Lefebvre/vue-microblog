@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "vue-microblog-1",
+			"path": "../../../Projects/vue-microblog-1"
+		},
+		{
+			"name": "src",
+			"path": "src"
+		}
+	],
+	"settings": {}
+}
