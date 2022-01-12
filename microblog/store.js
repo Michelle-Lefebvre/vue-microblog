@@ -1,22 +1,42 @@
 import {
-  reactive
+  reactive,
+  computed
 } from 'vue';
+import {
+  testPosts
+} from './testPosts';
 
 class Store {
   constructor() {
     this.state = reactive({
-      posts: [{
-        id: 1,
-        title: 'Title',
-        content: 'Learning Vue.js',
-        likes: 10,
-        hashtages: [
-          'vue',
-          'javascript',
-          'composition api'
-        ]
-      }]
+      posts: testPosts,
+      currentTag: null
     })
+  }
+
+  setHashtag(tag) {
+    this.state.currentTag = tag
+  }
+
+  incrementLike(post) {
+    const thePost = this.state.posts.find(x => {
+      return x.id === post.id
+    })
+
+    if (!thePost) {
+      return
+    }
+    thePost.likes += 1
+  }
+
+  get filteredPosts() {
+    if (!store.state.currentTag) {
+      return store.state.posts;
+    }
+
+    return store.state.posts.filter((post) =>
+      post.hashtags.includes(store.state.currentTag)
+    );
   }
 }
 
