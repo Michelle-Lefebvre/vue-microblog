@@ -5,7 +5,13 @@ import {
 export const store = createStore({
   state() { // is like data
     return {
-      count: 0
+      postId: null
+    }
+  },
+
+  mutations: {
+    setPostId(state, postId) {
+      state.postId = postId
     }
   }
 })
