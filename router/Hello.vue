@@ -1,4 +1,4 @@
-<template>Hello Router</template>
+<template>Hello Router-View</template>
 <script>
 export default {};
 </script>

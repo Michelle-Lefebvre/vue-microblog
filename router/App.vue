@@ -1,5 +1,5 @@
 <template>
-  MML App
+  <router-link to="/posts">Posts</router-link>
   <router-view />
 </template>
 
