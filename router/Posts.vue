@@ -13,11 +13,25 @@
 
 <script>
 import { testPosts } from '../microblog/testPosts.js';
+
 export default {
   data() {
     return {
       posts: testPosts
     };
+  },
+
+  methods: {
+    createPost(newPost) {
+      const id = this.posts.length + 1;
+      this.posts.push({
+        id,
+        title: newPost.title,
+        content: newPost.content
+      });
+
+      this.$router.push(`/posts/${id}`);
+    }
   }
 };
 </script>
