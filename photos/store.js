@@ -1,16 +1,16 @@
 import {
   createStore
-} from 'vuex'
+} from 'vuex';
 import {
   albums
-} from './albums'
+} from './albums';
 import {
   photos
-} from './photos'
+} from './photos';
 
 export const store = createStore({
-  modules: { // register
+  modules: {
     albums,
     photos
   }
-})
+});
