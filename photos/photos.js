@@ -18,7 +18,7 @@ export const photos = {
       album
     }) {
       const res = await window.fetch(
-        `https://jsonplaceholder.typicode.com/photos?album=${album.id}`)
+        `https://jsonplaceholder.typicode.com/photos?albumId=${album.id}`)
       const json = await res.json()
       console.log(json)
       ctx.commit('setPhotosForCurrentAlbum', json)

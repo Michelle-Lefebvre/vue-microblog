@@ -1,5 +1,5 @@
 <template>
-  <button @click="click">{{ album.title }}</button>
+  <router-link :to="`/albums/${album.id}`">{{ album.title }}</router-link>
 </template>
 
 <script>
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style scoped>
-button {
+a {
   background: darkcyan;
   color: white;
   border: none;
@@ -42,7 +42,7 @@ button {
   text-decoration: none;
   font-family: Arial;
 }
-button:hover {
+a:hover {
   filter: brightness(120%);
   cursor: pointer;
   transition: 0.1s;
