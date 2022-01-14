@@ -10,18 +10,6 @@ export default {
       type: Object,
       required: true
     }
-  },
-
-  setup(props) {
-    const store = useStore();
-
-    const click = () => {
-      store.dispatch('photos/getByAlbum', { album: props.album });
-    };
-
-    return {
-      click
-    };
   }
 };
 </script>

@@ -3,25 +3,37 @@ export const photos = {
 
   state() {
     return {
-      photos: []
-    }
+      all: [],
+      cache: {}
+    };
   },
 
   mutations: {
-    setPhotosForCurrentAlbum(state, photos) {
-      state.all = photos
+    setPhotosForCurrentAlbum(state, { photos, albumId }) {
+      state.all = photos;
+      state.cache[albumId] = photos;
     }
   },
 
   actions: {
-    async getByAlbum(ctx, {
-      album
-    }) {
+    async getByAlbum(ctx, { albumId }) {
+      if (ctx.state.cache[albumId]) {
+        ctx.commit('setPhotosForCurrentAlbum', {
+          photos: ctx.state.cache[albumId],
+          albumId
+        });
+        return;
+      }
+
       const res = await window.fetch(
-        `https://jsonplaceholder.typicode.com/photos?albumId=${album.id}`)
-      const json = await res.json()
-      console.log(json)
-      ctx.commit('setPhotosForCurrentAlbum', json)
+        `https://jsonplaceholder.typicode.com/photos?albumId=${albumId}`
+      );
+      const json = await res.json();
+
+      ctx.commit('setPhotosForCurrentAlbum', {
+        photos: json,
+        albumId
+      });
     }
   }
-}
+};
